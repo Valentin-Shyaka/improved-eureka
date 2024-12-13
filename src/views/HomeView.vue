@@ -11,7 +11,7 @@ import Post from "../components/Post.vue";
 const userStore = useUserStore();
 const router = useRouter();
 
-// Modal State and Input Fields
+
 const showModal = ref(false);
 const input_title = ref("");
 const input_description = ref("");
@@ -35,7 +35,7 @@ const {data: jobs, isLoading, isError, error } = useQuery({
     console.error("Failed to fetch jobs:", err);
     toast.error("Failed to fetch jobs. Please try again.");
   },
-  staleTime: 1000 * 60 * 5, 
+  staleTime: 1000 * 60 * 5, //inimota 5
   cacheTime: 1000 * 60 * 30, //iminota 30
 });
 
@@ -63,7 +63,7 @@ const addPosting = async () => {
   const newJob = {
     title: input_title.value,
     description: input_description.value,
-    skills:'Frontend Wizard',
+    skills: input_sector.value || 'Frontend Wizard',
     sector: input_sector.value,
     employment_type: input_employment_type.value,
     application_instructions: input_application_instruction.value,

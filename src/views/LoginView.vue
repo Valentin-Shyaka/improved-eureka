@@ -1,7 +1,7 @@
 <template>
   <div class=" flex items-center align-middle p-10 justify-center text-4xl">
-    <div v-if="loading" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" >
-        Loading...
+    <div v-if="loading" class="fixed inset-0 flex items-center justify-center font-bold text-white bg-black bg-opacity-50 z-50" >
+        Signing You In...
     </div>
     <div class="bg-white border p-6 shadow-lg rounded-xl w-full sm:w-1/2">
       <h2 class="font-bold text-3xl">Login</h2>
