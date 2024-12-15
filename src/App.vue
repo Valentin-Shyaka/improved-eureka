@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView,useRouter } from 'vue-router'
 
-import FirstComponent from './components/FirstComponent.vue'
+import NavBar from './components/NavBar.vue'
 import { useUserStore } from './store/userStore';
 import Sidebar from './components/Sidebar.vue';
 
@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
 </div>
 
   <div class=" w-full">
-  <FirstComponent/>
+  <NavBar/>
  
   <RouterView />
   </div>
