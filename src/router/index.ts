@@ -1,10 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import {useUserStore} from '../store/userStore'
+import SingleJobView from '@/views/SingleJobView.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/job/:id',
+      name: 'jobDetails',
+      component: SingleJobView,
+    },
     {
       path: '/',
       name: 'home',
@@ -13,21 +20,22 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/LoginView.vue'),
     },
+    { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   ],
 })
 
 router.beforeEach((to, from, next) => {
   const userStore = useUserStore();
+  
 
   if (to.name !== "login" && !userStore.isAuthenticated) {
-    next({ name: "login" }); // Redirect to login if unauthenticated
+    console.log('Unauthenticated---------')
+    next({ name: "login" }); // Redirect to login niba user ari unauthenticated
   } else {
-    next(); // Proceed if authenticated or accessing login
+    console.log('Authenticated-----------')
+    next(); 
   }
 });
 

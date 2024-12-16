@@ -11,7 +11,7 @@ interface UserData{
 
 export const useUserStore = defineStore("user", {
   state: () => ({
-    user: null, 
+    user: JSON.parse(localStorage.getItem("user") || "null") as UserData | null 
   }),
 
   getters: {
@@ -22,11 +22,17 @@ export const useUserStore = defineStore("user", {
     
     setUser(userData: UserData | null ) {
       this.user = userData ;
+      if (userData) {
+        localStorage.setItem("user", JSON.stringify(userData)); 
+      } else {
+        localStorage.removeItem("user"); 
+      }
     },
 
     
     clearUser() {
       this.user = null;
+      localStorage.removeItem("user"); 
     },
   },
 });

@@ -17,6 +17,8 @@
             <p class="font-bold mt-2">Type: <span class="font-light ">{{ props.employment_type }} </span></p>
         </div>
 
+        <a :href='`/job/${props.id}`' class='mt-4 text-blue-400 w-full text-left'>Read more</a>
+
     </div>
 </template>
 <script setup lang="ts">

@@ -18,14 +18,16 @@ router.beforeEach((to, from, next) => {
  
   
 
-  if (!isAuthenticated && to.name !== "login") {
+  if (!isAuthenticated() && to.name !== "login") {
+
+    console.log(isAuthenticated())
     
     next({ name: "login" });
   } else if (isAuthenticated() && to.name === "login") {
     
     next({ name: "home" });
   } else {
-    // Allow navigation
+    
     next();
   }
 });
