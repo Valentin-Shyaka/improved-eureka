@@ -8,9 +8,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/job/:id',
-      name: 'jobDetails',
+      path: '/job/:id/',
+      name: 'jobDetails ',
       component: SingleJobView,
+      props: true
     },
     {
       path: '/',
