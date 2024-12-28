@@ -10,6 +10,10 @@
 }
 
 
+.ProseMirror:focus {
+    outline: none;
+  }
+
 
 :root {
 	--primary: #EA40A4;

@@ -1,0 +1,15 @@
+{
+    "id": "doc123",
+    "content": "Current version content",
+    "version": 5,
+    "deltas": [
+      { "version": 4, "delta": "Change between v3 and v4", "timestamp": "..." , "comment":"   "},
+      { "version": 3, "delta": "Change between v2 and v3", "timestamp": "..." , "comment": " great keep it up "}
+    ],
+    "baseVersion": {
+      "version": 1,
+      "content": "Base content for reconstruction"
+    }
+}
+
+  

@@ -1,16 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import {useUserStore} from '../store/userStore'
-import SingleJobView from '@/views/SingleJobView.vue'
+import EditorPlayground from '@/views/EditorPlayground.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    
     {
-      path: '/job/:id/',
-      name: 'jobDetails ',
-      component: SingleJobView,
+      path: '/editor/',
+      name: 'editor ',
+      component: EditorPlayground,
       props: true
     },
     {

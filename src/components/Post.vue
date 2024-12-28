@@ -15,6 +15,7 @@
             <p class="font-bold mt-2">Deadline: <span class="font-light ">{{ props.application_deadline.split('T')[0] }} </span> </p>
             <p class="font-bold mt-2">Sector: <span class="font-light ">{{ props.sector }} </span></p>
             <p class="font-bold mt-2">Type: <span class="font-light ">{{ props.employment_type }} </span></p>
+            <p class="font-bold mt-2">Skills: <span class="font-light">{{ props.skills }}</span></p>
         </div>
 
         <a :href='`/job/${props.id}`' class='mt-4 text-blue-400 w-full text-left'>Read more</a>
@@ -32,6 +33,7 @@ interface PostProps {
     description: string;
     application_deadline: Date;
     sector: string;
+    skills: string;
     employment_type:string;
     application_instruction: string;
 

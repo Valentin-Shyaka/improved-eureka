@@ -64,6 +64,7 @@ const postings_asc = computed(() => {
           :created_at="post.created_at"
           :id="post.id"
           :employment_type="post.employment_type"
+          :skills="post.skills"
 
         />
       </div>
