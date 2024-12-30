@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import {useUserStore} from '../store/userStore'
-import EditorPlayground from '@/views/EditorPlayground.vue'
+import EditorPlayground from '../views/EditorPlayground.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
@@ -9,10 +9,9 @@ const router = createRouter({
   routes: [
     
     {
-      path: '/editor/',
-      name: 'editor ',
+      path: '/editor',
+      name: 'editor',
       component: EditorPlayground,
-      props: true
     },
     {
       path: '/',

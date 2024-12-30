@@ -22,8 +22,8 @@
       router.push({ name: "login" }); 
     };
 
-    const goToEditor=()=>{
-      router.push({name: "editor"})
+    const goToEditor = ()=>{
+      router.push({ name: "editor"})
     }
 </script>
 
