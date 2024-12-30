@@ -34,7 +34,7 @@ const providerB = new TiptapCollabProvider({
     <template>
       <div class="">
         <Editor :provider={providerA} :ydoc={ydocA} :room={collabRoom} />
-        <Editor :provider={providerB} :ydoc={ydocB} :room={collabRoom} />
+        
         
       </div>  
     </template>
