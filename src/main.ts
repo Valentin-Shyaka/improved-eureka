@@ -12,7 +12,7 @@ import store from './store'
 
 
 
-
+const pinia = createPinia();
 const app = createApp(App)
 
 app.use(Toast, {
@@ -22,7 +22,7 @@ app.use(Toast, {
   });
 
 app.use(VueQueryPlugin)
-const pinia = createPinia();
+
 app.use(pinia); 
 app.use(router)
 app.use(store)

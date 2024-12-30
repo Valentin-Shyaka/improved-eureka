@@ -36,37 +36,37 @@ const NoosPlugin = {
     // coreYdoc.set('rooms', empty)
     // coreYdoc.set('users', empty)
 
-    users.observe((ymapEvent) => {
-      ymapEvent.target === users; // => true
+    // users.observe((ymapEvent) => {
+    //   ymapEvent.target === users; // => true
 
-      // Find out what changed:
-      // Option 1: A set of keys that changed
-      ymapEvent.keysChanged; // => Set<strings>
-      // Option 2: Compute the differences
-      ymapEvent.changes.keys; // => Map<string, { action: 'add'|'update'|'delete', oldValue: any}>
+    //   // Find out what changed:
+    //   // Option 1: A set of keys that changed
+    //   ymapEvent.keysChanged; // => Set<strings>
+    //   // Option 2: Compute the differences
+    //   ymapEvent.changes.keys; // => Map<string, { action: 'add'|'update'|'delete', oldValue: any}>
 
-      // sample code.
-      ymapEvent.changes.keys.forEach((change, key) => {
-        if (change.action === "add") {
-          console.log(
-            `Property "${key}" was added. Initial value: `,
-            users.get(key)
-          );
-        } else if (change.action === "update") {
-          console.log(
-            `Property "${key}" was updated. New value: "${users.get(
-              key
-            )}". Previous value: `,
-            change.oldValue
-          );
-        } else if (change.action === "delete") {
-          console.log(
-            `Property "${key}" was deleted. New value: undefined. Previous value: `,
-            change.oldValue
-          );
-        }
-      });
-    });
+    //   // sample code.
+    //   ymapEvent.changes.keys.forEach((change, key) => {
+    //     if (change.action === "add") {
+    //       console.log(
+    //         `Property "${key}" was added. Initial value: `,
+    //         users.get(key)
+    //       );
+    //     } else if (change.action === "update") {
+    //       console.log(
+    //         `Property "${key}" was updated. New value: "${users.get(
+    //           key
+    //         )}". Previous value: `,
+    //         change.oldValue
+    //       );
+    //     } else if (change.action === "delete") {
+    //       console.log(
+    //         `Property "${key}" was deleted. New value: undefined. Previous value: `,
+    //         change.oldValue
+    //       );
+    //     }
+    //   });
+    // });
 
     rooms.observe((ymapEvent) => {
       ymapEvent.target === rooms; // => true
