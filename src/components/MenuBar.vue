@@ -35,6 +35,19 @@
             isActive: () => this.editor.isActive('italic'),
           },
           {
+          icon: 'image',
+          title: 'Image',
+          action: () => {
+            const url = prompt('Enter the image URL');
+            if (url) {
+               this.editor.commands.setImage({ src: url })
+              // this.editor.chain().focus().setImage({ src: url }).run();
+              
+            }
+          },
+          isActive: () => this.editor.isActive('image'),
+        },
+          {
             icon: 'strikethrough',
             title: 'Strike',
             action: () => this.editor.chain().focus().toggleStrike().run(),

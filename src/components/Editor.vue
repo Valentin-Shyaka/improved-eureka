@@ -8,6 +8,7 @@
     <div class="w-1/3 flex flex-col space-y-4 ">
         <button class="btn bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold" @click="addComment">Add Comment</button>
         <button class="btn bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold" @click="removeComment">Remove Comment</button>
+        <button class="btn bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold" @click="addImage">Add Image</button>
       </div>
     </div>
    
@@ -31,14 +32,13 @@ import { v4 as uuidv4 } from "uuid";
 import { useUserStore } from '@/store/userStore';
 
 // Component imports
-import MenuBar from "@/components/MenuBar.vue";
-
-// Extensions imports
+import MenuBar from "@/components/MenuBar.vue"
 import CharacterCount from "@tiptap/extension-character-count";
 import Collaboration from "@tiptap/extension-collaboration";
 import Document from '@tiptap/extension-document';
 import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 import Highlight from "@tiptap/extension-highlight";
+import Image from '@tiptap/extension-image';
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
 import StarterKit from "@tiptap/starter-kit";
@@ -126,6 +126,14 @@ const createEditor = () => {
       StarterKit.configure({
         history: false,
       }),
+      Image.configure({
+        HTMLAttributes: {
+            class: 'editor-image',
+        },
+        inline: false,
+        allowBase64: true,
+        
+      }),
       Highlight,
       TaskList,
       TaskItem,
@@ -175,6 +183,15 @@ const createEditor = () => {
   let r = { room: room.value, users: editor.value.storage.collaborationCursor.users };
   store.commit("updateRooms", r);
 };
+
+
+const addImage = () => {
+  const url = window.prompt('URL')
+
+      if (url) {
+        this.editor.chain().focus().setImage({ src: url }).run()
+      }
+  }
 
 const addComment = () => {
   const commentId = `comment-${uuidv4()}`;
@@ -261,7 +278,8 @@ defineExpose({
   addComment,
   removeComment,
   setName,
-  setRoom
+  setRoom,
+  addImage
 });
 </script>
 <style lang="scss">
@@ -271,7 +289,30 @@ defineExpose({
   padding: 2px 4px;
   transition: background-color 0.3s ease;
 }
+.my-custom-class{
+  display: block;
+}
 .my-comment:hover {
   background-color: #ffd740; /* Slightly darker yellow on hover */
 }
+
+.editor-image {
+  .editor-image {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  display: block;
+}
+}
+
+img {
+    display: block;
+    height: auto;
+    margin: 1.5rem 0;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid var(--purple);
+    }
+  } 
 </style>
