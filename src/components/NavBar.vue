@@ -37,7 +37,7 @@
        
         <div v-if="isAuthenticated()">
           <button @click="logout" class="px-4 py-2 text-red-400 border border-red-400 cursor-pointer">Logout</button>
-          <button class="bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold">Go to Editor</button>
+          <button @click="goToEditor" class="bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold">Go to Editor</button>
         </div>
         <!-- <div v-else class="px-4 py-2 text-red-400 border border-red-400 cursor-pointer">
           <RouterLink   class="px-4 py-2 cursor-pointer" to="/login">Login</RouterLink>
