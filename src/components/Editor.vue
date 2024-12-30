@@ -3,7 +3,7 @@
     <div class="w-full flex gap-10">
       <div class="w-2/3">
       <menu-bar class="flex text-gray-400" :editor="editor" />
-      <editor-content class="p-10 h-96 border my-10 rounded-xl  bg-white outline-none" :editor="editor"  />
+      <editor-content class="p-10 h-fit min-h-screen border my-10 rounded-xl  bg-white outline-none" :editor="editor"  />
     </div>
     <div class="w-1/3 flex flex-col space-y-4 ">
         <button class="btn bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold" @click="addComment">Add Comment</button>
