@@ -4,6 +4,10 @@
       <div class="w-2/3">
       <menu-bar class="flex text-gray-400" :editor="editor" />
       <editor-content class="p-10 h-fit min-h-screen border my-10 rounded-xl  bg-white outline-none" :editor="editor"  />
+      <AddCommentPopup 
+      v-if="showModal" 
+      @close="showModal = false"
+      />
     </div>
     <div class="w-1/3 flex flex-col space-y-4 ">
         <button class="btn bg-black px-4 py-2 cursor-pointer rounded-lg text-white font-bold" @click="addComment">Add Comment</button>
@@ -32,7 +36,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useUserStore } from '@/store/userStore';
 
 // Component imports
-import MenuBar from "@/components/MenuBar.vue"
+import MenuBar from "@/components/MenuBar.vue";
+import AddCommentPopup from '@/components/AddCommentPopup.vue';
 import CharacterCount from "@tiptap/extension-character-count";
 import Collaboration from "@tiptap/extension-collaboration";
 import Document from '@tiptap/extension-document';
@@ -44,6 +49,9 @@ import TaskList from "@tiptap/extension-task-list";
 import StarterKit from "@tiptap/starter-kit";
 import CommentExtension from "@sereneinserenade/tiptap-comment-extension";
 
+
+
+const showModal = ref(false);
 
 const getRandomElement = (list) => list[Math.floor(Math.random() * list.length)];
 
@@ -94,7 +102,7 @@ const createEditor = () => {
   ();
 
   provider.value = new HocuspocusProvider({
-    url:"wss://hocus-noosphere.glitch.me/",
+    url:"ws://a5d0-197-243-44-93.ngrok-free.app",
     name: "project-name",
     document: ydoc,
   });
@@ -195,8 +203,9 @@ const addImage = () => {
 
 const addComment = () => {
   const commentId = `comment-${uuidv4()}`;
-  editor.value.commands.setComment(commentId);
-  alert(`Comment added with ID: ${commentId}`);
+  showModal.value = true;
+  // editor.value.commands.setComment(commentId);
+  // alert(`Comment added with ID: ${commentId}`);
 };
 
 const removeComment = () => {
@@ -220,12 +229,12 @@ const setName = () => {
   }
 };
 
-const setRoom = () => {
-  const room = (window.prompt("Choose a Room from 0 to 99") || "").trim().substring(0, 32);
-  if (room) {
-    updateCurrentRoom({ room });
-  }
-};
+// const setRoom = () => {
+//   const room = (window.prompt("Choose a Room from 0 to 99") || "").trim().substring(0, 32);
+//   if (room) {
+//     updateCurrentRoom({ room });
+//   }
+// };
 
 const updateCurrentUser = (attributes) => {
   currentUser.value = { ...currentUser.value, ...attributes };
@@ -278,13 +287,13 @@ defineExpose({
   addComment,
   removeComment,
   setName,
-  setRoom,
+  // setRoom,
   addImage
 });
 </script>
 <style lang="scss">
 .my-comment {
-  background-color: #ffeb3b; /* Light yellow highlight */
+  background-color: violet; /* Light yellow highlight */
   border-radius: 4px;
   padding: 2px 4px;
   transition: background-color 0.3s ease;
@@ -293,17 +302,18 @@ defineExpose({
   display: block;
 }
 .my-comment:hover {
-  background-color: #ffd740; /* Slightly darker yellow on hover */
+  background-color: black; /* Slightly darker yellow on hover */
+  color: white;
 }
 
-.editor-image {
+
   .editor-image {
-  max-width: 100%;
+  max-width: 1200px;
   height: auto;
   margin: 1rem 0;
   display: block;
 }
-}
+
 
 img {
     display: block;

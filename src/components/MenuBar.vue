@@ -40,8 +40,8 @@
           action: () => {
             const url = prompt('Enter the image URL');
             if (url) {
-               this.editor.commands.setImage({ src: url })
-              // this.editor.chain().focus().setImage({ src: url }).run();
+               this.editor.commands.setImage({ src: url }).run()
+               this.editor.chain().focus().setImage({ src: url }).run();
               
             }
           },
