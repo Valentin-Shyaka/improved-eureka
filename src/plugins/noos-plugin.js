@@ -12,11 +12,11 @@ const NoosPlugin = {
     // const usersYmap = coreYdoc.getMap('users')
     const coreProvider = new HocuspocusProvider({
       //url: "wss://yjs-leveldb.glitch.me/", // old noosphere with leveldb persistance
-      url: "ws://a5d0-197-243-44-93.ngrok-free.app", //hocuspocus with mysqlite //'wss://connect.hocuspocus.cloud',
+      url: "ws://41b5-105-178-45-229.ngrok-free.app", //hocuspocus with mysqlite //'wss://connect.hocuspocus.cloud',
       // parameters: {
       //   key: 'write_bqgvQ3Zwl34V4Nxt43zR',
       // },
-      name: "noosphere",
+      name: "d72f7ce8-6a82-4374-b6d9-b738db4c84d3",
       document: coreYdoc,
     });
 
