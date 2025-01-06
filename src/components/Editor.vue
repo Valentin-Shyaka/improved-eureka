@@ -102,7 +102,7 @@ const createEditor = () => {
   ();
 
   provider.value = new HocuspocusProvider({
-    url:"ws://41b5-105-178-45-229.ngrok-free.app",
+    url:"wss://41b5-105-178-45-229.ngrok-free.app",
     name: "d72f7ce8-6a82-4374-b6d9-b738db4c84d3",
     document: ydoc,
   });
